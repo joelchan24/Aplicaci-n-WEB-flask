@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 #Decolorador
 #Metodo route recibe un nombre para poder crear una url
-@app.route('/')
+@app.route('/', methods = ['GET'])
 def Login():
     return render_template('Login.html')
 
@@ -26,5 +26,5 @@ def footer():
     
 
 if __name__ == '__main__':
-    app.debug = True
+    #app.debug = True
     app.run()
