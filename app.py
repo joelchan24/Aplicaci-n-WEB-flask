@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 #Para crear nuestras rutas del servidor o url
 app = Flask(__name__)
+PORT = 3000
 
 #Decolorador
 #Metodo route recibe un nombre para poder crear una url
@@ -27,4 +28,4 @@ def footer():
 
 if __name__ == '__main__':
     #app.debug = True
-    app.run()
+    app.run(port = PORT)
