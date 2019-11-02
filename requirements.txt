@@ -24,7 +24,6 @@ PyMySQL==0.9.3
 pyOpenSSL==19.0.0
 PySocks==1.6.8
 pytz==2019.1
-pywin32==223
 query-string==2019.4.13
 request==2019.4.13
 requests==2.21.0
