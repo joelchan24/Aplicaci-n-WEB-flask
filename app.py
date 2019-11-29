@@ -48,6 +48,18 @@ def Perfil(idusuario):
     print(data)
     return render_template('Perfil.html',data=data)  
 
+@app.route('/AddUsuario/<idUsuario>')
+def AddUsuario(idUsuario):
+    idUsuarioUs = idUsuario
+
+    URL = "https://api-beesoft.herokuapp.com/perfil" 
+    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}  
+    PARAMS = {'idUsuario':idUsuarioUs}
+    r = requests.post(url = URL, json= PARAMS,headers=headers)    
+    data = r.json()
+    #print(data)
+    return render_template('AddUsuario.html',idUsuario=idUsuario,data=data)
+
 @app.route('/CrontrolUsuarios.html')
 def CrontrolUsuarios():
     URL = "https://api-beesoft.herokuapp.com/listAllUsers"   
