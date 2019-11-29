@@ -175,17 +175,16 @@ def ApiarioUm(usuario,nombre):
 
     return render_template('ApiarioUsuario.html',data=data,nombre=nombre,usuarioid=usu)
 #Cajas 3 parametros
-@app.route('/cajas/<idapiario>/<nombre>/<nomapiario>')
-def ApiarioCajas(idapiario,nombre,nomapiario):
+@app.route('/cajas/<idapiario>/<nomapiario>')
+def ApiarioCajas(idapiario,nomapiario):
     apiario=idapiario
-    nom=nombre
     nomapiario=nomapiario
     URL = "https://api-beesoft.herokuapp.com/caja" 
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'} 
     PARAMS = {'idApiario':apiario}
     r = requests.post(url = URL, json= PARAMS,headers=headers)
     data = r.json()
-    return render_template('CajasApiario.html',data=data,apiario=apiario,nombre=nom,napiario=nomapiario)
+    return render_template('CajasApiario.html',data=data,apiario=apiario,napiario=nomapiario)
 
 #Caja con 1 parametros
 @app.route('/CajaInfo/<idcaja>')
