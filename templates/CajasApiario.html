@@ -1,0 +1,86 @@
+{% include "Header.html" %}
+<h2>Cajas</h2>
+<!-- ===============emcabezado del conteiner============== -->
+              
+<div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Cajas de {{nombre}} apiario {{napiario}}</h3>
+            <ol class="breadcrumb">
+                       </ol>
+        </div>
+        <div style="padding-left: 500px; text-align: right 220px;">
+
+    </div>
+    </div>
+   <!-- ================END header of container==================== -->
+<div class="row">
+        <div class="card col-lg-6 col-xlg-9 col-md-7">
+                <div class="col-12">
+                        <div class="table-responsive">
+                                <table id="tblUsuarios" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th hidden>ID</th>
+                                            <th>#Caja</th>
+                                            <th>Cuadros</th>
+                                            <th>F.Registro</th>
+                                            <th></th>
+                                            
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            {% for item in data %}
+                                        <tr>
+                                                <td hidden>{{item.idCaja}}</td>
+                                                <td>{{item.numeroCaja}}</td>
+                                                <td>{{item.numeroCuadros}}</td>
+                                                <td>{{item.fechaReg}}</td>
+                                                
+                                                
+                                                <td><a type="button" href="/CajaInfo/{{item.idCaja}}" class="btn btn-warning"><i class="fa fa-bar-chart-o"></i></a>  
+                                                    <a type="button"  onclick='Edit({{item.idCaja}},{{item.numeroCuadros}});' class="btn btn-info "><i style="color:white;" class="fa fa-pencil-square"></i></a>
+                                                </td>
+
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                    </div>
+        </div>
+        <div class="card col-lg-6 col-xlg-9 col-md-7">
+                <div class="card-body">
+                    <form action="/GuardarCaja" method="POST" class="form-horizontal form-material">
+                        <input id="txtidApiario" name="txtidApiario" value="{{apiario}}" hidden >
+                        <input id="txtidApiario" name="txtdueñoApiario" value="{{nombre}}" hidden >
+                        <input id="txtidApiario" name="txtnapiario" value="{{napiario}}" hidden >
+                        <input id="txtidCaja" name="txtidCaja" value="0"  hidden>
+                        
+                        <div class="form-group">
+                            <label class="col-md-12">Numero de Cuadros</label>
+                            <div class="col-md-12">
+                                <input id="txtNumCuadros" name="txtNumCuadros" type="number" placeholder="Num Cuadros.." class="form-control form-control-line">
+                            </div>
+                        </div>
+                        
+  
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-success" value="" ><i style="color:white;" class="fa fa-save"></i> </button>
+                                </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+    function Edit(idcaja,numcuadros) {
+        document.getElementById('txtidCaja').value=idcaja;
+        document.getElementById('txtNumCuadros').value=numcuadros;
+        document.getElementById('txtNumCuadros').focus();
+    }
+    </script>   
+
+       {% extends "Footer.html"%}    

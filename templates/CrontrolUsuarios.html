@@ -1,0 +1,68 @@
+{% include "Header.html" %}
+
+                <!-- ===============emcabezado del conteiner============== -->
+              
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">Control de Usuario</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                            <li class="breadcrumb-item active">Usuarios</li>
+                        </ol>
+                    </div>
+                    <div style="padding-left: 500px; text-align: right 220px;">
+                    <a type="button" href="{{ url_for('AddUsuario',idUsuario=0) }}" class="btn btn-secondary"><i class="fa fa-user-o"></i> Agregar</a>
+                </div>
+                </div>
+                <!-- ================END header of container==================== -->
+              
+                
+                <!-- ================Start Page Content======================== -->
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                               
+                                <div class="table-responsive">
+                                    <table id="tblUsuarios" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nombre</th>
+                                                <th>Correo</th>
+                                                <th>Usuario y password</th>
+                                                
+                                                <th>Teléfono</th>
+                                                <th>F.Registro</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                {% for item in data %}
+                                            <tr>
+                                                    <td>{{item.idUsuario}}</td>
+                                                    <td>{{item.nombre}}</td>
+                                                    <td>{{item.correo}}</td>
+                                                    <td>{{item.usuario +" "+item.password}}</td>
+                                                    
+                                                    <td>{{item.telefono}}</td>
+                                                    <td>{{item.fechaReg}}</td>
+                                                    <td>
+                                                        
+                                                        <a type="button" href="/apiario/{{item.idUsuario}}/{{item.nombre}}" class="btn  btn-warning "><i class="fa fa-building"></i></a> 
+                                                        <a type="button" href="{{ url_for('AddUsuario',idUsuario=item.idUsuario) }}" class="btn btn-info "><i class="fa fa-pencil-square"></i></a>
+                                                    
+                                                    </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- =============End PAge Content=================== -->
+               
+{% extends "footer.html" %}    

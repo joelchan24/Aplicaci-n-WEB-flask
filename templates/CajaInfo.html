@@ -1,0 +1,321 @@
+{% include "Header.html" %}
+
+                <!-- ===============emcabezado del conteiner============== -->
+              
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">Caja </h3>
+                        <ol class="breadcrumb">
+                         
+                        </ol>
+                    </div>
+                    <div style="padding-left: 500px; text-align: right 220px;">
+
+                </div>
+                </div>
+                <div class="row">
+                        <!-- Start Notification -->
+                        <div class="col-lg-6 col-md-12">
+                                <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Historial</h5>
+                                            <ul class="feeds">
+                                                <li>
+                                                    <div class="bg-light-info"><i class="fa fa-bell-o"></i></div>Cambios recientes<span class="text-muted">Hace un momento</span></li>
+                                                <li>
+                                                    <div class="bg-light-success"><i class="fa fa-server"></i></div> Agua renovada<span class="text-muted">Hace 2 horas</span></li>
+                                                <li>
+                                                    <div class="bg-light-warning"><i class="fa fa-shopping-cart"></i></div> Comportamiento<span class="text-muted">01 Julio</span></li>
+                                                <li>
+                                                    <div class="bg-light-danger"><i class="fa fa-user"></i></div> Revisión<span class="text-muted">01 Julio</span></li>
+                                              
+                                            </ul>       
+                                        </div>
+                                </div>
+                        </div>
+                       
+                        <div class="col-lg-6">
+                                <div class="card">
+                                        <div class="card-body" style="align-self: center;">
+                                            <div class="d-flex m-b-30 no-block">
+                                                <h5 class="card-title m-b-0 align-self-center">Revisiones</h5>
+                                                <div class="ml-auto">
+                                                    <select class="custom-select b-0">
+                                                        <option selected="">Hoy</option>
+                                                        
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <canvas id="myCanvas" style="height:300px; width:300px; text-align: center;"></canvas>
+                                            <ul class="list-inline m-t-30 text-center font-12">
+                                                <li><i class="fa fa-circle text-success"></i> Temperatura</li>
+                                                <li><i class="fa fa-circle text-info"></i> Humedad</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <!-- End Feeds -->
+                </div>
+              
+               
+                <div class="row">
+                        <div class="col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex m-b-30 no-block">
+                                            <h5 class="card-title m-b-0 align-self-center">Estado</h5>
+                                            <div class="ml-auto">
+                                            </div>
+                                        </div>
+                                        {% for item in data %}
+                                        
+                                        <div id="" style="height:100px; width:100%;">Saludable</div>{% endfor %}
+                                        <ul class="list-inline m-t-30 text-center font-12">
+                                            <li><i class="fa fa-circle text-success"></i> Bueno</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex m-b-30 no-block">
+                                            <h5 class="card-title m-b-0 align-self-center">Temperatura</h5>
+                                            <div class="ml-auto">
+                                            </div>
+                                        </div>
+                                        {% for item in data %}
+                                        <div id="temperatura" name="temperatura" style="height:100px; width:100%;">{{item.temperatura}}</div>{% endfor %}
+                                        <ul class="list-inline m-t-30 text-center font-12">
+                                            <li><i class="fa fa-circle text-info"></i> Vel. Viento</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex m-b-30 no-block">
+                                                <h5 class="card-title m-b-0 align-self-center">Humedad</h5>
+                                                <div class="ml-auto">
+                                                </div>
+                                            </div>
+                                            {% for item in data %}
+                                            <div id="humedad" name="humedad" style="height:100px; width:100%;">{{item.humedad}}</div>{% endfor %}
+                                            <ul class="list-inline m-t-30 text-center font-12">
+                                                <li><i class="fa fa-circle text-success"></i> Bueno</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-lg-3">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="d-flex m-b-30 no-block">
+                                                    <h5 class="card-title m-b-0 align-self-center">Sonido</h5>
+                                                    <div class="ml-auto">
+                                                    </div>
+                                                </div>
+                                                {% for item in data %}
+                                                <div id="" style="height:100px; width:100%;">{{item.sonido}}</div>{% endfor %}
+                                                <ul class="list-inline m-t-30 text-center font-12">
+                                                    <li><i class="fa fa-circle text-success"></i> Bueno</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+
+                <!-- =============End PAge Content=================== -->
+                 
+
+ 
+        <script type="text/javascript" >
+            var myCanvas = document.getElementById("myCanvas");
+       
+      myCanvas.width = 300;
+       
+      myCanvas.height = 300;
+       
+       
+       
+      var ctx = myCanvas.getContext("2d");
+      
+      
+      function drawLine(ctx, startX, startY, endX, endY){
+       
+          ctx.beginPath();
+       
+          ctx.moveTo(startX,startY);
+       
+          ctx.lineTo(endX,endY);
+       
+          ctx.stroke();
+       
+      }
+      
+      function drawArc(ctx, centerX, centerY, radius, startAngle, endAngle){
+       
+          ctx.beginPath();
+       
+          ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+       
+          ctx.stroke();
+       
+      }
+      
+      function drawPieSlice(ctx,centerX, centerY, radius, startAngle, endAngle, color ){
+       
+          ctx.fillStyle = color;
+       
+          ctx.beginPath();
+       
+          ctx.moveTo(centerX,centerY);
+       
+          ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+       
+          ctx.closePath();
+       
+          ctx.fill();
+       
+      }
+      
+      // Raw JavaScript
+    //var geocode = JSON.parse(document.getElementById("mydiv").dataset.geocode);
+
+    // jQuery
+    //var geocode = JSON.parse($("#mydiv").data("data"));
+      //var myVinyls = {"temperatura":22,"humedad":25};
+      var Temperatura = document.getElementById("temperatura").innerHTML;
+      var Humedad = document.getElementById("humedad").innerHTML;
+      var myVinyls = {
+                    "Temperatura": parseInt(Temperatura),
+
+                    "Huemdad": parseInt(Humedad)
+
+                    };
+      //var data={{data|tojson}};
+      //var nom=$("#temperatura").val();
+      //var myVinyls = {"#humedad", "#temperatura";
+      //var myGeocode = ['{{ data[0] }}', '{{ data[1] }}'];
+      alert('Hola: ' + Temperatura + ' ' + Humedad);
+      var Piechart = function(options){
+       
+          this.options = options;
+       
+          this.canvas = options.canvas;
+       
+          this.ctx = this.canvas.getContext("2d");
+       
+          this.colors = options.colors;
+       
+       
+       
+          this.draw = function(){
+       
+              var total_value = 0;
+       
+              var color_index = 0;
+       
+              for (var categ in this.options.data){
+       
+                  var val = this.options.data[categ];
+       
+                  total_value += val;
+       
+              }
+       
+       
+       
+              var start_angle = 0;
+       
+              for (categ in this.options.data){
+       
+                  val = this.options.data[categ];
+       
+                  var slice_angle = 2 * Math.PI * val / total_value;
+       
+       
+       
+                  drawPieSlice(
+       
+                      this.ctx,
+       
+                      this.canvas.width/2,
+       
+                      this.canvas.height/2,
+       
+                      Math.min(this.canvas.width/2,this.canvas.height/2),
+       
+                      start_angle,
+       
+                      start_angle+slice_angle,
+       
+                      this.colors[color_index%this.colors.length]
+       
+                  );
+       
+       
+       
+                  start_angle += slice_angle;
+       
+                  color_index++;
+       
+              }
+       
+       
+       
+              //drawing a white circle over the chart
+       
+              //to create the doughnut chart
+       
+              if (this.options.doughnutHoleSize){
+       
+                  drawPieSlice(
+       
+                      this.ctx,
+       
+                      this.canvas.width/2,
+       
+                      this.canvas.height/2,
+       
+                      this.options.doughnutHoleSize * Math.min(this.canvas.width/2,this.canvas.height/2),
+       
+                      0,
+       
+                      2 * Math.PI,
+       
+                      "#ffffff"
+       
+                  );
+       
+              }
+       
+       
+       
+          }
+       
+      }
+      var myDougnutChart = new Piechart(
+       
+          {
+       
+              canvas:myCanvas,
+       
+              data:myVinyls,
+       
+              colors:["#57d9ff","#937e88"],
+       
+              doughnutHoleSize:0.7
+       
+          }
+       
+      );
+       
+      myDougnutChart.draw();
+        </script>
+       
+               
+{% extends "footer.html" %}    

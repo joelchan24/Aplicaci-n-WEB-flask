@@ -1,0 +1,134 @@
+{% include "Header.html" %}
+
+<div class="col-lg-12 col-xlg-9 col-md-7">
+    <div class="card">
+        <!-- Tab panes -->
+        <div class="card-body">
+            <form class="form-horizontal form-material">
+                <div class="form-group">
+                    <label class="col-md-12">Nombre</label>
+                    <div class="col-md-12">
+                        <input id="txtID" name="txtID" value="{{idUsuario}}">
+                        <input id="txtNombre" name="txtNombre" type="text" placeholder="Nombre.." value="{{ data[0].nombre if data  }}" class="form-control form-control-line">
+                    </div>
+                </div>
+                <div class="form-group">
+                        <label class="col-md-12">Apellidos</label>
+                        <div class="col-md-12">
+                            <input id="txtApellidos" name="txtApellidos" type="text" value="{{ data[0].apellido if data  }}" placeholder="Apellidos.." class="form-control form-control-line">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                            <label class="col-md-12">Usuario</label>
+                            <div class="col-md-12">
+                                <input id="txtUsuario" name="txtUsuario" type="text" value="{{ data[0].usuario if data  }}" placeholder="Usuario.." class="form-control form-control-line">
+                            </div>
+                        </div>
+                <div class="form-group">
+                    <label for="example-email" class="col-md-12">Correo</label>
+                    <div class="col-md-12">
+                        <input type="email" placeholder="ejemplo@gmail.com" value="{{ data[0].correo if data  }}" class="form-control form-control-line" name="txtCorreo" id="txtCorreo">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12">Password</label>
+                    <div class="col-md-12">
+                        <input type="password" name="txtPassWord" value="{{ data[0].password if data  }}" id="txtPassWord" placeholder="*********" class="form-control form-control-line">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12">Dirección</label>
+                    <div class="col-md-12">
+                        <input name="txtDireccion" id="txtDireccion" value="{{ data[0].direccion if data  }}" placeholder="Dirección" rows="5" class="form-control form-control-line"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12">Teléfono</label>
+                    <div class="col-md-12">
+                        <input type="text" id="txtTelefono" value="{{ data[0].telefono if data  }}" name="txtTelefono" placeholder="Teléfono" class="form-control form-control-line">
+                    </div>
+                </div>
+               
+                 <div class="form-group">
+                        <label class="col-md-12">Status</label>
+                       
+                        <div class="col-sm-12">
+                            <select name="txtStatus" id="txtStatus" class="form-control form-control-line">
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                               
+                            </select>
+                        </div>
+                  </div> 
+               
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button class="btn btn-success" id="btnSave" name="btnSave">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    window.onload = function() {
+ var btnSave = document.getElementById("btnSave");
+ btnSave.onclick=function(e){
+     var nombre=$("#txtNombre").val();
+     var Apellidos=$("#txtApellidos").val();
+     var Correo=$("#txtCorreo").val();
+     var usuario=$("#txtUsuario").val();
+     var contrasena=$("#txtPassWord").val();
+     var direccion=$("#txtDireccion").val();
+     var Telefono=$("#txtTelefono").val();
+     var idsuario=$("#txtID").val();
+     var date = new Date();
+     var fechareg=new Intl.DateTimeFormat('en-AU').format(date);
+     var estatus="1";
+     var idtipousuario="2";
+     var url='';
+     var Message='';
+     if(idsuario=="0")
+     {
+         url='http://127.0.0.1:3000/insertUser';
+         Message="Usuario Guardado";
+
+     }else{
+        url='http://127.0.0.1:3000/updatePerfil';
+        Message="Datos Usuario Actualizado";
+
+     }
+
+     
+   
+       e.preventDefault();
+     $.ajax({
+         url: url,
+         dataType: 'json',
+         type: 'POST',
+          headers: {'Access-Control-Allow-Origin': url}, 
+         contentType: 'application/json',
+        /*  crossDomain: false, */
+        // data:data,
+         data:JSON.stringify({"idUsuario":idsuario, "nombre" : nombre, "apellido" : Apellidos, "correo" : Correo, "usuario" : usuario, "password" : contrasena, "direccion" : direccion,"telefono":Telefono, "fechaReg" : fechareg, "estatus" : estatus,"idTipoUsuario":idtipousuario}) ,
+         processData: true,
+         success : function(response,status) {
+          swal("Message", Message, "success",)
+              .then((value) => {
+                  window.location.href = '/CrontrolUsuarios.html';
+              });
+                         
+          
+         },
+          Error: function(error){
+                     //codigo error
+                     console.log(error);
+              }
+     });
+     
+ 
+ };
+
+};
+</script> 
+{% extends "footer.html" %}    

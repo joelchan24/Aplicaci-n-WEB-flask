@@ -1,0 +1,68 @@
+{% include "Header.html" %}
+
+                <!-- ===============emcabezado del conteiner============== -->
+              
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">Apiarios de {{nombre}}</h3>
+                        <ol class="breadcrumb">
+                           <!--  <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                            <li class="breadcrumb-item active">Apiarios</li>
+  -->                       </ol>
+                    </div>
+                    <div style="padding-left: 500px; text-align: right 220px;">
+                            
+                    <a type="button" href="{{ url_for('AddApiario',idusuario=usuarioid,nom=nombre,idapiario=0,nomApiario=' ') }}" class="btn btn-secondary"><i class="fa fa-reorder"></i> Apiario</a>
+                </div>
+                </div>
+                <!-- ================END header of container==================== -->
+              
+                
+                <!-- ================Start Page Content======================== -->
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                               
+                                <div class="table-responsive">
+                                    <table id="tblUsuarios" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                               
+                                                <th>Tipo de Abeja</th>
+                                                
+                                                
+                                                <th>Apiario</th>
+                                                <th>F.Registro</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for item in data %}
+                                            <tr>
+                                                    <td>{{item.idApiario}}</td>
+                                                    
+                                                    <td>{{item.tipoAbeja}}</td>
+                                                    <td>{{item.nombreApiario}}</td>
+                                                    <td>{{item.fechaReg}}</td>
+                                                    <td>
+                                                        <!--Ver Apiarios-->
+                                                         <a type="button" href="/cajas/{{item.idApiario}}/{{nombre}}/{{item.nombreApiario}}" class="btn  btn-warning "><i class="fa fa-archive"></i></a> 
+                                                        <!--Editar-->
+                                                         <a type="button" href="{{ url_for('AddApiario',idusuario=usuarioid,nom=nombre,idapiario=item.idApiario,nomApiario=item.nombreApiario) }}" class="btn  btn-info "><i class="fa fa-pencil-square"></i></a>
+                                                        </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <!-- =============End PAge Content=================== -->
+               
+{% extends "footer.html" %}    

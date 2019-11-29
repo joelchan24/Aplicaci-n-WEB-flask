@@ -1,0 +1,61 @@
+{% include "Header.html" %}
+
+                <!-- ===============emcabezado del conteiner============== -->
+              
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">Control de Apiarios</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                            <li class="breadcrumb-item active">Apiarios</li>
+                        </ol>
+                    </div>
+                    <div style="padding-left: 500px; text-align: right 220px;">
+
+                </div>
+                </div>
+                <!-- ================END header of container==================== -->
+              
+                
+                <!-- ================Start Page Content======================== -->
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                               
+                                <div class="table-responsive">
+                                    <table id="tblUsuarios" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Abejas</th>
+                                                <th>Tipo de Abeja</th>
+                                                
+                                                
+                                                <th>Apiario</th>
+                                                <th>F.Registro</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for item in data %}
+                                            <tr>
+                                                    <td>{{item.idApiario}}</td>
+                                                    <td>{{item.nombre}}</td>
+                                                    <td>{{item.tipo}}</td>
+                                                    <td>{{item.nombreApiario}}</td>
+                                                    <th>{{item.fechaReg}}</th>
+                                                    <th> <a type="button" href="/{{item.idApiario}}" class="btn  btn-warning "><i class="fa fa-reorder"></i>Cajas</a> <br> </th>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <!-- =============End PAge Content=================== -->
+               
+{% extends "footer.html" %}    

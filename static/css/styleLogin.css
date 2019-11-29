@@ -4,7 +4,7 @@ body {
   height: 100%;
   position: absolute;
   font-family: Raleway;
-  background: url(https://www.tangible-eluniversal.com.mx/sites/default/files/styles/corte_1_1230x692/public/field/image/abeja_portada.jpg) no-repeat fixed;
+  background: url(https://pixabay.com/es/photos/miel-de-abeja-abeja-las-abejas-3930374/) no-repeat fixed;
   background-size: cover;
   background-position: 50%;
   -webkit-font-smoothing: antialiased;
@@ -16,7 +16,7 @@ body .menu {
   background: inherit;
 }
 body .menu .mainmenu {
-  background: url(https://www.tangible-eluniversal.com.mx/sites/default/files/styles/corte_1_1230x692/public/field/image/abeja_portada.jpg) no-repeat fixed;
+  background: url(https://pixabay.com/es/photos/miel-de-abeja-abeja-las-abejas-3930374/) no-repeat fixed;
   background-size: cover;
   background-position: 50%;
 }

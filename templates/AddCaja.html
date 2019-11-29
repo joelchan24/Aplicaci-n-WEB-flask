@@ -1,0 +1,52 @@
+{% include "Header.html" %}
+
+<div class="col-lg-12 col-xlg-9 col-md-7">
+    <div class="card">
+        <h2>Cajas </h2>
+        <!-- Tab panes -->
+        <div class="card-body">
+            <form class="form-horizontal form-material">              
+                                
+               
+                <div class="form-group">
+                    <label class="col-md-12">Password</label>
+                    <div class="col-md-12">
+                        <input type="password" name="txtPassWord" id="txtPassWord" placeholder="*********" class="form-control form-control-line">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12">Dirección</label>
+                    <div class="col-md-12">
+                        <input name="txtDireccion" id="txtDireccion" placeholder="Dirección" rows="5" class="form-control form-control-line"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12">Teléfono</label>
+                    <div class="col-md-12">
+                        <input type="text" id="txtTelefono" name="txtTelefono" placeholder="Teléfono" class="form-control form-control-line">
+                    </div>
+                </div>
+               
+                 <div class="form-group">
+                        <label class="col-md-12">Status</label>
+                       
+                        <div class="col-sm-12">
+                            <select name="txtStatus" id="txtStatus" class="form-control form-control-line">
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                               
+                            </select>
+                        </div>
+                  </div> 
+                
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button class="btn btn-success" id="btnSave" name="btnSave">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+          
+{% extends "footer.html" %}    

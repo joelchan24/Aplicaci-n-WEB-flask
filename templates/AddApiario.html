@@ -1,0 +1,92 @@
+{% include "Header.html" %}
+
+<div class="col-lg-12 col-xlg-9 col-md-7">
+    <div class="card">
+        <!-- Tab panes -->
+        <div class="card-body">
+            <form class="form-horizontal form-material">
+                <div class="form-group">
+                    <input type="text" name="txtID" id="txtID" value="{{apiario}}" hidden>
+                    <label class="col-md-12">Nombre</label>
+                    <div class="col-md-12">
+                        <input id="txtNombreA" name="txtNombreA" type="text" value="{{nombreapi}}" placeholder="Nombre.." class="form-control form-control-line">
+                    </div>
+                </div>
+                
+                        <input id="txtidUsuario" name="txtidUsuario" value="{{usuario}}" type="text" placeholder="Dueño" class="form-control form-control-line" hidden>
+                   
+                        <input id="txtnomusuario" name="txtnomusuario" value="{{nomusu}}" type="text" placeholder="Dueño" class="form-control form-control-line" hidden>
+                 <div class="form-group">
+                        <label class="col-md-12">Tipo de Abeja</label>
+                       
+                        <div class="col-sm-12">
+                            <select name="txtStatus" id="txtStatus" class="form-control form-control-line">
+                                <option value="1">Meliferas</option> 
+                            </select>
+                        </div>
+                  </div> 
+                
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button class="btn btn-success" id="btnSave" name="btnSave">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+ <script>
+     
+      window.onload = function() {
+   var btnSave = document.getElementById("btnSave");
+   btnSave.onclick=function(e){
+       var NombreA=$("#txtNombreA").val();
+       var idusuario=$("#txtidUsuario").val();
+       var nomusuario=$("#txtnomusuario").val();
+       var ipapiario=$("#txtID").val();
+   
+       var date = new Date();
+       var fechareg=new Intl.DateTimeFormat('en-AU').format(date);
+       var url=''
+       var Message=''
+       if(ipapiario==0)
+       {
+           url='https://api-beesoft.herokuapp.com/insertApiario'
+           Message='Apiario Guardado'
+
+       }else{
+           url='https://api-beesoft.herokuapp.com/updateApiario'
+           Message='Datos de Apiario Actualizado'
+
+       }
+     
+         e.preventDefault();
+       $.ajax({
+           url: url,
+           dataType: 'json',
+           type: 'POST',
+            headers: {'Access-Control-Allow-Origin': url}, 
+           contentType: 'application/json',
+          /*  crossDomain: false, */
+          // data:data,
+           data:JSON.stringify({idApiario:ipapiario,nombreApiario:NombreA,fechaReg:fechareg,idUsuario:idusuario,regEstatus:1,idTipoAbejas:1}) ,
+           processData: true,
+           success : function(response,status) {
+            
+            swal("Message", ""+Message, "success",)
+                .then((value) => {
+                    window.location.href = '/apiario/'+idusuario+'/'+nomusuario;
+                });
+           },
+            Error: function(error){
+                       //codigo error
+                       console.log(error);
+                }
+       });
+       
+   
+   };
+  
+};
+ </script>           
+{% extends "footer.html" %}    

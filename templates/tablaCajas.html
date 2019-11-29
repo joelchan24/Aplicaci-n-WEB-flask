@@ -1,0 +1,32 @@
+{% block body %}
+
+<div class="table-responsive">
+    <table id="tblUsuarios" class="table">
+        <thead>
+            <tr>
+                <th hidden>ID</th>
+                <th>#Caja</th>
+                <th>Cuadros</th>
+                <th>F.Registro</th>
+                <th></th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+                {% for item in data %}
+            <tr>
+                    <td hidden>{{item.idCaja}}</td>
+                    <td>{{item.numeroCaja}}</td>
+                    <td>{{item.numeroCuadros}}</td>
+                    <td>{{item.fechaReg}}</td>
+                    
+                    
+                    <th><a type="button" href="" class="btn btn-success">Ver Cajas</a>  </th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
