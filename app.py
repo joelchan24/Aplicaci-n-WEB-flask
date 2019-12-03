@@ -197,8 +197,14 @@ def CajaInfo(idcaja):
     PARAMS = {'idCaja':idCaja}
     r = requests.post(url = URL, json= PARAMS,headers=headers)
     data = r.json()
+
+    URL = "https://api-beesoft.herokuapp.com/visita" 
+    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'} 
+    PARAMS = {'idCaja':idCaja}
+    r = requests.post(url = URL, json= PARAMS,headers=headers)
+    data2 = r.json()
     #return render_template('CajasApiario.html',data=data,apiario=apiario,nombre=nom,napiario=nomapiario)
-    return render_template('CajaInfo.html',caja=idcaja, data=data)
+    return render_template('CajaInfo.html',caja=idcaja, data=data, data2=data2)
 
 
 ######Cuidado#######

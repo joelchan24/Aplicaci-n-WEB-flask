@@ -18,7 +18,7 @@
                         <div class="col-lg-6 col-md-12">
                                 <div class="card">
                                         <div class="card-body">
-                                            <h5 class="card-title">Historial</h5>
+                                        <!--<h5 class="card-title">Historial</h5>
                                             <ul class="feeds">
                                                 <li>
                                                     <div class="bg-light-info"><i class="fa fa-bell-o"></i></div>Cambios recientes<span class="text-muted">Hace un momento</span></li>
@@ -29,7 +29,29 @@
                                                 <li>
                                                     <div class="bg-light-danger"><i class="fa fa-user"></i></div> Revisión<span class="text-muted">01 Julio</span></li>
                                               
-                                            </ul>       
+                                            </ul>  -->   
+                                            <div class="table-responsive">
+                                                <table id="tblUsuarios" class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th hidden>ID</th>
+                                                           
+                                                            <th>Última visita</th>
+                                                            <th>Usuario</th>
+                                                            <th>Número de caja</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% for item in data2 %}
+                                                        <tr>
+                                                                <td>{{item.fecha}}</td>
+                                                                <td>{{item.usuario}}</td>
+                                                                <td>{{item.numeroCaja}}</td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>  
                                         </div>
                                 </div>
                         </div>
