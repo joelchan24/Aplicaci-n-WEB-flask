@@ -1,5 +1,6 @@
-from flask import Blueprint, Flask, render_template,request, redirect, url_for, flash
+from flask import Blueprint, Flask, render_template,request, redirect, url_for, flash, session
 import requests
+from flask_login import login_user, logout_user, login_required
 from datetime import datetime, date
 
 
@@ -13,6 +14,33 @@ app.secret_key = "mysecretkey"
 @app.route('/', methods = ['GET'])
 def Login():
     return render_template('Login.html')
+
+@app.route('/authLogin',  methods = ['POST'])
+def authLogin():
+    
+    username=request.form['user']
+    pas=request.form['password']
+    
+    #usuarioDetails = request.get_json()
+    #username = usuarioDetails['username']
+    #pas = usuarioDetails['password']
+    URL = "https://api-beesoft.herokuapp.com/login" 
+    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}  
+    PARAMS={'username':username,'password':pas}
+    r = requests.post(url = URL, json= PARAMS,headers=headers)    
+    data = r.json()
+
+    try:
+        if len(data) is 0:
+            return redirect('/') 
+        else:
+            return redirect('index.html') 
+    except:
+        return redirect('/')
+
+       # session['loggedin'] = True
+       # session['id'] = account['idUsuario']
+       # session['username'] = account['username']
 
 
 @app.route('/index.html')

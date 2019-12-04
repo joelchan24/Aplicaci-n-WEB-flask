@@ -36,7 +36,7 @@
                                                         <tr>
                                                             <th hidden>ID</th>
                                                            
-                                                            <th>Última visita</th>
+                                                            <th>Fecha Visitas</th>
                                                             <th>Usuario</th>
                                                             <th>Número de caja</th>
                                                         </tr>
@@ -91,10 +91,9 @@
                                             </div>
                                         </div>
                                         {% for item in data %}
-                                        
                                         <div id="" style="height:100px; width:100%;">Saludable</div>{% endfor %}
                                         <ul class="list-inline m-t-30 text-center font-12">
-                                            <li><i class="fa fa-circle text-success"></i> Bueno</li>
+                                            <li><i class="fa fa-circle text-success"></i> </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -110,7 +109,7 @@
                                         {% for item in data %}
                                         <div id="temperatura" name="temperatura" style="height:100px; width:100%;">{{item.temperatura}}</div>{% endfor %}
                                         <ul class="list-inline m-t-30 text-center font-12">
-                                            <li><i class="fa fa-circle text-info"></i> Vel. Viento</li>
+                                            <li><i class="fa fa-circle text-info"></i> </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -126,7 +125,7 @@
                                             {% for item in data %}
                                             <div id="humedad" name="humedad" style="height:100px; width:100%;">{{item.humedad}}</div>{% endfor %}
                                             <ul class="list-inline m-t-30 text-center font-12">
-                                                <li><i class="fa fa-circle text-success"></i> Bueno</li>
+                                                <li><i class="fa fa-circle text-success"></i> </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -143,7 +142,7 @@
                                                 {% for item in data %}
                                                 <div id="" style="height:100px; width:100%;">{{item.sonido}}</div>{% endfor %}
                                                 <ul class="list-inline m-t-30 text-center font-12">
-                                                    <li><i class="fa fa-circle text-success"></i> Bueno</li>
+                                                    <li><i class="fa fa-circle text-success"></i> </li>
                                                 </ul>
                                             </div>
                                         </div>
