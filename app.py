@@ -1,6 +1,6 @@
 from flask import Blueprint, Flask, render_template,request, redirect, url_for, flash, session
 import requests
-from flask_login import login_user, logout_user, login_required
+
 from datetime import datetime, date
 
 
@@ -228,18 +228,26 @@ def CajaInfo(idcaja):
     r = requests.post(url = URL, json= PARAMS,headers=headers)
     data = r.json()
 
+    
+    URL = "https://api-beesoft.herokuapp.com/monitoreoAll" 
+    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'} 
+    PARAMS = {'idCaja':idCaja}
+    r = requests.post(url = URL, json= PARAMS,headers=headers)
+    data3 = r.json()
+
     URL = "https://api-beesoft.herokuapp.com/visita" 
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'} 
     PARAMS = {'idCaja':idCaja}
     r = requests.post(url = URL, json= PARAMS,headers=headers)
     data2 = r.json()
+
     #return render_template('CajasApiario.html',data=data,apiario=apiario,nombre=nom,napiario=nomapiario)
-    return render_template('CajaInfo.html',caja=idcaja, data=data, data2=data2)
+    return render_template('CajaInfo.html',caja=idcaja, data=data, data2=data2, data3=data3)
 
 
 ######Cuidado#######
 
 
 if __name__ == '__main__':
-    #app.debug = True
+    app.debug = True
     app.run()
