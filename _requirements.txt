@@ -15,7 +15,7 @@ itsdangerous==1.1.0
 Jinja2==2.10.1
 MarkupSafe==1.1.1
 numpy==1.16.4
-pipenv==2018.11.26
+pipenv==2022.1.8
 post==2019.4.13
 public==2019.4.13
 pycosat==0.6.3
